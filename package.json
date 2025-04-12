@@ -1,19 +1,18 @@
 {
-  "name": "boletos",
+  "name": "api gestão de boletos e pdf ",
   "version": "1.0.0",
   "description": "Sistema de geração e gestão de boletos",
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "main": "index.ts",
+  "type": "module",
+  "main": "server.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --watch src index.ts",
     "build": "tsc",
-    "start": "node dist/index.js",
-    "typeorm": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli",
-    "migration:generate": "npm run typeorm migration:generate -- -d ./data-source.ts src/migrations/Migration",
-    "migration:run": "npm run typeorm migration:run -- -d ./data-source.ts",
-    "migration:revert": "npm run typeorm migration:revert -- -d ./data-source.ts"
+    "start": "node dist/server.js",
+    "typeorm": "typeorm-ts-node-esm",
+    "migration:generate": "typeorm-ts-node-esm -d config/database.ts migration:generate",
+    "migration:run": "typeorm-ts-node-esm -d config/database.ts migration:run",
+    "migration:revert": "typeorm-ts-node-esm -d config/database.ts migration:revert"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -28,14 +27,19 @@
     "pdfkit": "^0.16.0",
     "pg": "^8.14.1",
     "reflect-metadata": "^0.2.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
     "typeorm": "^0.3.22"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
     "@types/multer": "^1.4.12",
     "@types/node": "^22.14.0",
     "@types/pdf-parse": "^1.1.5",
     "@types/pdfkit": "^0.13.9",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.8",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
