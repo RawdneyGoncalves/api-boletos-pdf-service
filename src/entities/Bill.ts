@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
-import { Lot } from './Lot';
+import { Lot } from './Lot.js';
 
 
 @Entity('boleto')

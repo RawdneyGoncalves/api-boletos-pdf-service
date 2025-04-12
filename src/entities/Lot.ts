@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Bill } from './Bill';
+import { Bill } from './Bill.js';
 
 
 @Entity('lote')
