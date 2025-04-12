@@ -1,10 +1,10 @@
 import { injectable, inject } from 'inversify';
 import { Request, Response } from 'express';
-import { TYPES } from '../types/types';
-import { BillService } from '../services/BillService';
-import { CSVService } from '../services/CSVService';
-import { PDFService } from '../services/PDFService';
-import { BillFilterDTO } from '../dto/BillDTO';
+import { TYPES } from '../types/types.js';
+import { BillService } from '../services/BillService.js';
+import { CSVService } from '../services/CSVService.js';
+import { PDFService } from '../services/PDFService.js';
+import { BillFilterDTO } from '../dto/BillDTO.js';
 
 @injectable()
 export class BillController {
@@ -14,16 +14,10 @@ export class BillController {
     @inject(TYPES.Services.PDFService) private pdfService: PDFService
   ) {}
 
-  /**
-   * Get all bills with optional filters
-   * @param req Express request object
-   * @param res Express response object
-   */
   async findAll(req: Request, res: Response): Promise<Response> {
     try {
       const filter = new BillFilterDTO(req.query);
       
-      // Check if report generation is requested
       if (filter.generateReport === 1) {
         const report = await this.billService.generateReport(filter);
         return res.json(report);
@@ -37,11 +31,6 @@ export class BillController {
     }
   }
 
-  /**
-   * Get bill by ID
-   * @param req Express request object
-   * @param res Express response object
-   */
   async findById(req: Request, res: Response): Promise<Response> {
     try {
       const id = parseInt(req.params.id);
@@ -58,11 +47,6 @@ export class BillController {
     }
   }
 
-  /**
-   * Import bills from CSV file
-   * @param req Express request object
-   * @param res Express response object
-   */
   async importCsv(req: Request, res: Response): Promise<Response> {
     try {
       if (!req.file) {
@@ -77,11 +61,6 @@ export class BillController {
     }
   }
 
-  /**
-   * Process PDF file, splitting it into individual bills
-   * @param req Express request object
-   * @param res Express response object
-   */
   async processPdf(req: Request, res: Response): Promise<Response> {
     try {
       if (!req.file) {
