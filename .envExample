@@ -1,0 +1,12 @@
+PORT=3000
+NODE_ENV=development
+
+DB_TYPE=postgres
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+DB_NAME=boletos_db
+
+UPLOAD_DIR=./uploads
+OUTPUT_DIR=./output
