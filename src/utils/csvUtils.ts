@@ -1,20 +1,26 @@
-import * as fs from 'fs';
-import * as csv from 'csv-parser';
+import fs from 'fs';
+import csvParser from 'csv-parser';
+import { ICsvBill } from '../types/types';
 
-export async function lerCSV(file: string) {
-  const dados = [];
-
+export const parseCsvFile = async (filePath: string): Promise<ICsvBill[]> => {
+  const results: ICsvBill[] = [];
+  
   return new Promise((resolve, reject) => {
-    fs.createReadStream(file)
-      .pipe(csv())
-      .on('data', (row) => {
-        dados.push(row);
+    fs.createReadStream(filePath)
+      .pipe(csvParser({ separator: ';' }))
+      .on('data', (data) => {
+        results.push({
+          name: data.nome,
+          unit: data.unidade,
+          amount: parseFloat(data.valor.replace(',', '.')),
+          digitableLine: data.linha_digitavel
+        });
       })
       .on('end', () => {
-        resolve(dados);
+        resolve(results);
       })
       .on('error', (error) => {
         reject(error);
       });
   });
-}
+};

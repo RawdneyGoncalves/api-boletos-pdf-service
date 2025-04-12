@@ -1,20 +1,20 @@
-import 'reflect-metadata';
 import express from 'express';
-import { conectarBanco } from './src/utils/database';
-import boletoRoutes from './src/routers/boletoRoutes';
-import 'dotenv/config';
+import path from 'path';
+
+import 'reflect-metadata';
+
 
 const app = express();
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-const port = parseInt(process.env.SERVER_PORT || '3000', 10);
+const uploadDir = process.env.UPLOAD_DIR || './uploads';
+const outputDir = process.env.OUTPUT_DIR || './output';
 
-conectarBanco().then(() => {
-  app.use('/boletos', boletoRoutes);
+app.use('/uploads', express.static(path.resolve(uploadDir)));
+app.use('/output', express.static(path.resolve(outputDir)));
 
-  app.listen(port, () => {
-    console.log(`🚀 Servidor rodando em: \x1b[36mhttp://localhost:${port}\x1b[0m`);
-  });
-}).catch((err) => {
-  console.error('❌ Erro ao conectar com o banco de dados:', err);
-});
+
+
+export default app;
