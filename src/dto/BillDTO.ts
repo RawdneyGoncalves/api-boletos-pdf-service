@@ -1,4 +1,4 @@
-import { IBill, IBillFilter, ICsvBill } from "../types/types";
+import { IBill, IBillFilter, ICsvBill } from "../types/types.js";
 
 
 
