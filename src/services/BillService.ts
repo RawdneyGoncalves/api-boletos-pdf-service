@@ -1,7 +1,7 @@
 import { injectable, inject } from 'inversify';
-import { TYPES, IBill, IBillFilter, IReportResult } from '../types/types';
-import { BillRepository } from '../repository/BillRepository';
-import { PDFService } from './PDFService';
+import { TYPES, IBill, IBillFilter, IReportResult } from '../types/types.js';
+import { BillRepository } from '../repository/BillRepository.js';
+import { PDFService } from './PDFService.js';
 
 @injectable()
 export class BillService {
