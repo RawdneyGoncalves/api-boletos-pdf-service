@@ -10,9 +10,9 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "typeorm": "typeorm-ts-node-esm",
-    "migration:generate": "typeorm-ts-node-esm -d config/database.ts migration:generate",
-    "migration:run": "typeorm-ts-node-esm -d config/database.ts migration:run",
-    "migration:revert": "typeorm-ts-node-esm -d config/database.ts migration:revert"
+    "migration:run": "typeorm-ts-node-esm -d src/config/database.ts migration:run",
+    "migration:revert": "typeorm-ts-node-esm -d src/config/database.ts migration:revert",
+    "migration:show": "typeorm-ts-node-esm -d src/config/database.ts migration:show"
   },
   "dependencies": {
     "cors": "^2.8.5",
