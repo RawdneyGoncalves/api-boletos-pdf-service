@@ -1,6 +1,6 @@
 import fs from 'fs';
 import csvParser from 'csv-parser';
-import { ICsvBill } from '../types/types';
+import { ICsvBill } from '../types/types.js';
 
 export const parseCsvFile = async (filePath: string): Promise<ICsvBill[]> => {
   const results: ICsvBill[] = [];

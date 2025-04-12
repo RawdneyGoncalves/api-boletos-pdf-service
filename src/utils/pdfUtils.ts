@@ -3,7 +3,7 @@ import path from 'path';
 import { PDFDocument } from 'pdf-lib';
 import PDFParse from 'pdf-parse';
 import PDFKit from 'pdfkit';
-import { IBill, IPdfPage } from '../types/types';
+import { IBill, IPdfPage } from '../types/types.js';
 
 
 export const extractPdfInfo = async (filePath: string): Promise<IPdfPage[]> => {
