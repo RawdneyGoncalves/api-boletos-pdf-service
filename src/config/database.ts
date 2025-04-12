@@ -1,15 +1,17 @@
-import "reflect-metadata";
+import 'reflect-metadata';
 import { DataSource } from 'typeorm';
-import * as dotenv from 'dotenv';
+import dotenv from 'dotenv';
 import path from 'path';
-import { CreateLoteTable1744340116573 } from "../migrations/1744340116573-CreateLoteTable";
-import { CreateBoletosTable1744339920331 } from "../migrations/1744339920331-CreateBoletosTable";
-import { Bill } from '../entities/Bill';
-import { Lot } from '../entities/Lot';
+import { fileURLToPath } from 'url';
+import { CreateLoteTable1744340116573 } from "../migrations/1744340116573-CreateLoteTable.js";
+import { CreateBoletosTable1744339920331 } from "../migrations/1744339920331-CreateBoletosTable.js";
+import { Bill } from '../entities/Bill.js';
+import { Lot } from '../entities/Lot.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
-
-const __dirname = path.resolve();
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -41,7 +43,7 @@ export const AppDataSource = new DataSource({
   }
 });
 
-export const initializeDatabase = async (): Promise<void> => {
+export const initializeDatabase = async () => {
   try {
     await AppDataSource.initialize();
     console.log("Conexão com o banco de dados PostgreSQL estabelecida com sucesso.");
