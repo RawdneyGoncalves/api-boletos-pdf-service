@@ -9,10 +9,11 @@ const billController = container.get<BillController>(TYPES.Controllers.BillContr
 
 /**
  * @swagger
- * /boletos:
+ * /api/boletos:
  *   get:
  *     summary: Lista todos os boletos
  *     description: Retorna uma lista de todos os boletos, com opção de filtros e geração de relatório
+ *     tags: [Boletos]
  *     parameters:
  *       - in: query
  *         name: nome
@@ -64,10 +65,11 @@ router.get('/', (req, res, next) => {
 
 /**
  * @swagger
- * /boletos/{id}:
+ * /api/boletos/{id}:
  *   get:
  *     summary: Busca um boleto específico
  *     description: Retorna um boleto pelo seu ID
+ *     tags: [Boletos]
  *     parameters:
  *       - in: path
  *         name: id
@@ -101,10 +103,11 @@ router.get('/:id', (req, res, next) => {
 
 /**
  * @swagger
- * /boletos/import-csv:
+ * /api/boletos/import-csv:
  *   post:
  *     summary: Importa boletos de um arquivo CSV
  *     description: Processa um arquivo CSV para importar boletos para o sistema
+ *     tags: [Boletos]
  *     requestBody:
  *       required: true
  *       content:
@@ -144,10 +147,11 @@ router.post('/import-csv', uploadCsv, (req, res, next) => {
 
 /**
  * @swagger
- * /boletos/process-pdf:
+ * /api/boletos/process-pdf:
  *   post:
  *     summary: Processa um arquivo PDF com múltiplos boletos
  *     description: Recebe um PDF com múltiplas páginas de boletos e o divide em arquivos individuais
+ *     tags: [Boletos]
  *     requestBody:
  *       required: true
  *       content:

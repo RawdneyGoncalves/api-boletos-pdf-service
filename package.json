@@ -8,7 +8,7 @@
   "main": "server.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/server.js",
+    "start": "npm run build & node dist/server.js",
     "typeorm": "typeorm-ts-node-esm",
     "migration:run": "typeorm-ts-node-esm -d src/config/database.ts migration:run",
     "migration:revert": "typeorm-ts-node-esm -d src/config/database.ts migration:revert",
