@@ -1,7 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { Lot } from './Lot.js';
 
-
 @Entity('boleto')
 export class Bill {
   @PrimaryGeneratedColumn()
@@ -17,7 +16,7 @@ export class Bill {
   @JoinColumn({ name: 'id_lote' })
   declare lot: Lot;
 
-  @Column({ type: 'decimal', precision: 10, scale: 2 })
+  @Column({ name: 'valor', type: 'decimal', precision: 10, scale: 2 })
   declare amount: number;
 
   @Column({ name: 'linha_digitavel' })
